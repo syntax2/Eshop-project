@@ -1,6 +1,6 @@
 //Rest APIs for user authentication and registration
 
-import jwt_decode from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 
 export const doLogin = (email, password) => {
   //Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
@@ -27,7 +27,7 @@ export const doLogin = (email, password) => {
         .then((json) => {
           if (response.ok) {
             let token = response.headers.get("x-auth-token");
-            let decoded = jwt_decode(token);
+            let decoded = jwtDecode(token);
             promiseResolveRef({
               username: json.email,
               accessToken: token,
