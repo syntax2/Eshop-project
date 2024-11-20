@@ -1,4 +1,5 @@
 //Rest APIs for address
+const BASE_URL = "https://dev-project-ecommerce.upgrad.dev/api";
 
 export const fetchAllAddresses = (accessToken) => {
   //Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
@@ -9,7 +10,7 @@ export const fetchAllAddresses = (accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/addresses", {
+  fetch(`${BASE_URL}/addresses`, {
     method: "GET",
     headers: {
       "x-auth-token": accessToken,
@@ -56,7 +57,7 @@ export const createAddress = (requestJson, accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/addresses", {
+  fetch(`${BASE_URL}/addresses`, {
     method: "POST",
     body: JSON.stringify(requestJson),
     headers: {

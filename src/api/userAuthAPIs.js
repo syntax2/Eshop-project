@@ -1,6 +1,7 @@
 //Rest APIs for user authentication and registration
 
 import { jwtDecode } from "jwt-decode";
+const BASE_URL = "https://dev-project-ecommerce.upgrad.dev/api";
 
 export const doLogin = (email, password) => {
   //Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
@@ -11,7 +12,7 @@ export const doLogin = (email, password) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/auth/signin", {
+  fetch(`${BASE_URL}/auth/signin`, {
     method: "POST",
     body: JSON.stringify({
       username: email,
@@ -68,7 +69,7 @@ export const doSignup = (requestJson) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/auth/signup", {
+  fetch(`${BASE_URL}/auth/signup`, {
     method: "POST",
     body: JSON.stringify(requestJson),
     headers: {

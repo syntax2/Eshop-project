@@ -1,4 +1,5 @@
 //Rest APIs for order
+const BASE_URL = "https://dev-project-ecommerce.upgrad.dev/api";
 
 export const createOrder = (requestJson, accessToken) => {
   //Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
@@ -9,7 +10,7 @@ export const createOrder = (requestJson, accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/orders", {
+  fetch(`${BASE_URL}/orders`, {
     method: "POST",
     body: JSON.stringify(requestJson),
     headers: {

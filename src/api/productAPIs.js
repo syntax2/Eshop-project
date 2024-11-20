@@ -1,4 +1,5 @@
 //Rest APIs for product
+const BASE_URL = "https://dev-project-ecommerce.upgrad.dev/api";
 
 export const fetchAllProducts = (accessToken) => {
   //Note: we are returning promise so that we can resolve it by using appropriate data type like json or text
@@ -9,7 +10,7 @@ export const fetchAllProducts = (accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/products", {
+  fetch(`${BASE_URL}/products`, {
     method: "GET",
     headers: {
       "x-auth-token": accessToken,
@@ -48,7 +49,7 @@ export const createProduct = (requestJson, accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/products", {
+  fetch(`${BASE_URL}/products`, {
     method: "POST",
     body: JSON.stringify(requestJson),
     headers: {
@@ -93,7 +94,7 @@ export const deleteProduct = (id, accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/products/" + id, {
+  fetch(`${BASE_URL}/products/${id}`, {
     method: "DELETE",
     headers: {
       "x-auth-token": accessToken,
@@ -131,7 +132,7 @@ export const modifyProduct = (requestJson, accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/products/" + requestJson.id, {
+  fetch(`${BASE_URL}/products/${requestJson.id}`, {
     method: "PUT",
     body: JSON.stringify(requestJson),
     headers: {
@@ -176,7 +177,7 @@ export const viewProduct = (id, accessToken) => {
     promiseResolveRef = resolve;
     promiseRejectRef = reject;
   });
-  fetch("http://localhost:8080/api/products/" + id, {
+  fetch(`${BASE_URL}/products/${id}`, {
     method: "GET",
     headers: {
       "x-auth-token": accessToken,
